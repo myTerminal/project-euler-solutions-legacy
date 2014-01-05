@@ -1,0 +1,27 @@
+#!/usr/bin/env node
+var arguments = process.argv,
+    problemNumber = arguments[2];
+
+if(problemNumber && problemNumber>0)
+    runProblem(problemNumber);
+else
+    console.log("Please specify a problem to run.");
+
+function runProblem(problemNumber) {
+    while(problemNumber.length<3)
+	problemNumber = "0" + problemNumber;
+    var start = new Date(),
+        end;
+    console.log("Running problem " + problemNumber + "...");
+    console.log("----------------------------\n");
+    try {
+	require("./Problem" + problemNumber);
+	end = new Date();
+	console.log("\n----------------------------");
+	console.log("Time taken: " + (end - start) + " milliseconds");
+    }
+    catch(e) {
+	if(e.code==="MODULE_NOT_FOUND")
+	    console.log("Problem not solved yet!");
+    }
+}
