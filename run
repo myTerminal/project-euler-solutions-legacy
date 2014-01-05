@@ -2,6 +2,11 @@
 var arguments = process.argv,
     problemNumber = arguments[2];
 
+if(problemNumber==="tests") {
+    require("./Tests");
+    return;
+}
+
 if(problemNumber && problemNumber>0)
     runProblem(problemNumber);
 else
