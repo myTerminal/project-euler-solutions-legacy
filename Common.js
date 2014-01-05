@@ -78,6 +78,15 @@ fibonacciMemoizableBig = function fibonacciMemoizableBig(term) {
     return (term==1 || term==2) ? "1" : addBigNumbers(func.call(this, term-1), func.call(this, term-2));
 };
 
+factorial = function factorial(term) {
+    return (term<2) ? 1 : term * factorial(term-1);
+};
+
+factorialMemoizable = function factorialMemoizable(term) {
+    var func = (typeof(this) === "function") ? this : factorialMemoizable;
+    return (term<1) ? 1 : term * func.call(this, term-1);
+};
+
 Memoizer = function Memoizer(func) {
     var lookUp = [];
 
@@ -100,6 +109,9 @@ exports.addBigNumbers = addBigNumbers;
 exports.scaleBigNumber = scaleBigNumber;
 exports.multiplyBigNumbers = multiplyBigNumbers;
 exports.raiseBigNumber = raiseBigNumber;
+
+exports.factorial = factorial;
+exports.factorialMemoizable = factorialMemoizable;
 
 exports.fibonacci = fibonacci;
 exports.fibonacciMemoizable = fibonacciMemoizable;
