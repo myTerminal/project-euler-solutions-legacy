@@ -15,7 +15,7 @@ function runProblem(problemNumber) {
     console.log("Running problem " + problemNumber + "...");
     console.log("----------------------------\n");
     try {
-	require("./Problem" + problemNumber);
+	require("./Problem" + problemNumber).run();
 	end = new Date();
 	console.log("\n----------------------------");
 	console.log("Time taken: " + (end - start) + " milliseconds");
