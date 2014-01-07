@@ -16,6 +16,7 @@ var problems = [new Problem("009", 31875000),
 		new Problem("024", "2783915460"),
 		new Problem("025", 4782),
 		new Problem("030", 443839),
+		new Problem("032", 45228),
 		new Problem("034", 40730),
 		new Problem("037", 748317)];
 
