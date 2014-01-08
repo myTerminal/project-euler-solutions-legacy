@@ -12,17 +12,17 @@
                 newCarry) + result;
     }
 
-    function getSum(a, b, c) {
-        var d = (a + b + c).toString();
-        return (d.length > 1) ? d[1] : d;
-    }
-
-    function getCarry(a, b, c) {
-        var d = (a + b + c).toString();
-        return (d.length > 1) ? parseInt(d[0]) : 0;
-    }
-
     return addLastDigit(number1, number2, 0);
+};
+
+function getSum(a, b, c) {
+    var d = (a + b + c).toString();
+    return (d.length > 1) ? d[1] : d;
+};
+
+function getCarry(a, b, c) {
+    var d = (a + b + c).toString();
+    return (d.length > 1) ? parseInt(d[0]) : 0;
 };
 
 scaleBigNumber = function scaleBigNumber(number, scale) {
