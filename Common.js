@@ -103,6 +103,23 @@ Memoizer = function Memoizer(func) {
     };
 };
 
+MemoizerMultiInputs = function MemoizerMultiInputs(func) {
+    var lookUp = {};
+
+    var getValue = function (inputs) {
+	var inputsInString = inputs.join("_");
+	if(lookUp[inputsInString])
+	    return lookUp[inputsInString];
+	var value = func.apply(getValue, inputs);
+	lookUp[inputsInString] = value;
+	return value;
+    };
+
+    return {
+	getValue: getValue
+    };
+};
+
 // ------------------- Exports ----------------------
 
 exports.addBigNumbers = addBigNumbers;
@@ -118,3 +135,4 @@ exports.fibonacciMemoizable = fibonacciMemoizable;
 exports.fibonacciMemoizableBig = fibonacciMemoizableBig;
 
 exports.Memoizer = Memoizer;
+exports.MemoizerMultiInputs = MemoizerMultiInputs;

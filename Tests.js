@@ -8,6 +8,7 @@ var problems = [new Problem("009", 31875000),
 		new Problem("010", "142913828922"),
 		new Problem("013", "5537376230"),
 		new Problem("014", 837799),
+		new Problem("015", "137846528820"),
 		new Problem("016", 1366),
 		new Problem("017", 21124),
 		new Problem("019", 171),
@@ -53,6 +54,12 @@ function runProblem(problem) {
     catch(e) {
 	if(e.code==="MODULE_NOT_FOUND")
 	    console.log("Problem not solved yet!");
+	else {
+	    console.log("********************************");
+	    console.log("Exception in problem " + problemNumber);
+	    console.log("********************************");
+	    return false;
+	}
     }
 
     return true;
