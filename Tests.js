@@ -21,7 +21,8 @@ var problems = [new Problem("009", 31875000),
 		new Problem("032", 45228),
 		new Problem("034", 40730),
 		new Problem("037", 748317),
-		new Problem("041", 7652413)];
+		new Problem("041", 7652413),
+		new Problem("048", "9110846700")];
 
 var failure;
 for(var i=0; i<problems.length; i++) {
