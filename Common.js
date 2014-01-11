@@ -120,6 +120,21 @@ MemoizerMultiInputs = function MemoizerMultiInputs(func) {
     };
 };
 
+getPrimesBelowNumber = function getPrimesBelowNumber(limit) {
+    var numbers = [];
+
+    for(i=0; i<limit; i++)
+	numbers.push(i);
+    numbers[1] = 0;
+
+    for(i=2; i<limit; i++)
+	for(j=i*i; j<limit; j=j+i)
+            if(j%i===0)
+		numbers[j]=0;
+
+    return numbers;
+};
+
 // ------------------- Exports ----------------------
 
 exports.addBigNumbers = addBigNumbers;
@@ -136,3 +151,5 @@ exports.fibonacciMemoizableBig = fibonacciMemoizableBig;
 
 exports.Memoizer = Memoizer;
 exports.MemoizerMultiInputs = MemoizerMultiInputs;
+
+exports.getPrimesBelowNumber = getPrimesBelowNumber;
