@@ -6,6 +6,7 @@ var Problem = function (number, result) {
 
 var problems = [new Problem("009", 31875000),
 		new Problem("010", "142913828922"),
+		new Problem("011", 70600674),
 		new Problem("013", "5537376230"),
 		new Problem("014", 837799),
 		new Problem("015", "137846528820"),
