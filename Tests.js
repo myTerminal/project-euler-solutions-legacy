@@ -34,7 +34,7 @@ for(var i=0; i<problems.length; i++) {
 if(failure)
     console.error("\nSOME TESTS FAILED!\n");
 else
-    console.log("\nAll tests passed!\n");
+    console.log("\nAll " + problems.length + " tests passed!\n");
 
 function runProblem(problem) {
     var problemNumber = problem.number,
