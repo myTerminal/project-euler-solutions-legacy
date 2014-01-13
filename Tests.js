@@ -4,7 +4,8 @@ var Problem = function (number, result) {
     this.result = result;
 };
 
-var problems = [new Problem("009", 31875000),
+var problems = [new Problem("001", 233168),
+    		new Problem("009", 31875000),
 		new Problem("010", "142913828922"),
 		new Problem("011", 70600674),
 		new Problem("013", "5537376230"),
