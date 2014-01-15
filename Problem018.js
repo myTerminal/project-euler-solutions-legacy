@@ -21,7 +21,7 @@ exports.run = function () {
         left,
         right,
         sum;
-    for(var i=triangle.length-2; i>=0; i--) {
+    for(var i=triangle.length-2; i>=0; i--)
 	for(var j=0; j<triangle[i].length; j++) {
 	    upper = triangle[i][j];
 	    left = triangle[i+1][j];
@@ -34,7 +34,6 @@ exports.run = function () {
 
 	    triangle[i][j] = upper;
 	}
-    }
     
     sum = triangle[0][0];
     console.log("sum: " + sum);
