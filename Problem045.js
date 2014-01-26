@@ -7,14 +7,14 @@ exports.run = function () {
 
     for(var i=285; i<limit; i++) {
 	triangleCollection.push(i*(i+1)/2);
-	pentagonalCollection.push(i*(3*i-1)/2);
-	hexagonalCollection.push(i*(2*i-1));
+	pentagonalCollection[i*(3*i-1)/2] = true;
+	hexagonalCollection[i*(2*i-1)] = true;
     }
 
     var currentTriangle;
     for(var i=0; i<triangleCollection.length && !number; i++) {
 	currentTriangle = triangleCollection[i];
-	if(pentagonalCollection.indexOf(currentTriangle)>-1 && hexagonalCollection.indexOf(currentTriangle)>-1)
+	if(pentagonalCollection[currentTriangle] && hexagonalCollection[currentTriangle])
 	    number = currentTriangle;
     }
     
