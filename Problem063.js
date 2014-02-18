@@ -2,11 +2,12 @@ var common = require("./Common");
 
 exports.run = function () {
     var limit = 100,
+        number,
         count = 0;
 
     for(var digits=1, hasExceeded, skipCount=0; digits<limit; digits++, hasExceeded=false)
 	for(var i=1; !hasExceeded && skipCount<2; i++) {
-	    var number = common.raiseBigNumber(i.toString(), digits);
+	    number = common.raiseBigNumber(i.toString(), digits);
 
 	    if(number.length == digits) {
 		count++;
