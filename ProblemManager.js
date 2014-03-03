@@ -28,7 +28,7 @@ var getPaddedProblemNumber = function (problemNumber) {
 };
 
 var getAnswer = function (paddedProblemNumber) {
-    require("./Problem" + paddedProblemNumber).run();
+    return require("./Problem" + paddedProblemNumber).run();
 };
 
 exports.runProblem = runProblem;

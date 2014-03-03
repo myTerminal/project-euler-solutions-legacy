@@ -1,3 +1,4 @@
+var problemManager = require("./ProblemManager");
 
 var Problem = function (number, result) {
     this.number = number;
@@ -55,31 +56,33 @@ var problems = [new Problem("001", 233168),
 		new Problem("081", 427337),
 		new Problem("099", 709)];
 
-var failure;
-for(var i=0; i<problems.length; i++) {
-    if(!runProblem(problems[i]))
-	failure = true;
-}
+var runAllTests = function () {
+    var failure;
+    for(var i=0; i<problems.length; i++) {
+	if(!testProblem(problems[i]))
+	    failure = true;
+    }
 
-if(failure)
-    console.error("\nSOME TESTS FAILED!\n");
-else
-    console.log("\nAll " + problems.length + " tests passed!\n");
+    if(failure)
+	console.error("\nSOME TESTS FAILED!\n");
+    else
+	console.log("\nAll " + problems.length + " tests passed!\n");
+};
 
-function runProblem(problem) {
-    var problemNumber = problem.number,
-        expectedResult = problem.result,
+var testProblem = function (problem) {
+    var expectedResult = problem.result,
         actualResult;
 
-    console.log("\nRunning problem " + problemNumber + "...");
-    console.log("Expected result: " + expectedResult);
+    printProblemHeader(problem);
+
     try {
-	actualResult = require("./Problem" + problemNumber).run();
-	console.log("Actual result: " + actualResult);
+	actualResult = problemManager.getAnswer(problem.number);
+	printActualResult(problem);
+
 	if(actualResult==expectedResult)
-	    console.log("Test successful!");
+	    printSuccessMessage();
 	else {
-	    console.error("*** FAILURE! ***");
+	    printFailureMessage();
 	    return false;
 	}
     }
@@ -87,12 +90,35 @@ function runProblem(problem) {
 	if(e.code==="MODULE_NOT_FOUND")
 	    console.log("Problem not solved yet!");
 	else {
-	    console.log("********************************");
-	    console.log("Exception in problem " + problemNumber);
-	    console.log("********************************");
+	    printExceptionMessage(problem);
 	    return false;
 	}
     }
 
     return true;
-}
+};
+
+var printProblemHeader = function (problem) {
+    console.log("\nRunning problem " + problem.number + "...");
+    console.log("Expected result: " + problem.expectedResult);
+};
+
+var printActualResult = function (problem) {
+    console.log("Actual result: " + problem.actualResult);
+};
+
+var printSuccessMessage = function () {
+    console.log("Test successful!");
+};
+
+var printFailureMessage = function () {
+    console.error("*** FAILURE! ***");
+};
+
+var printExceptionMessage = function (problem) {
+    console.log("********************************");
+    console.log("Exception in problem " + problem.number);
+    console.log("********************************");
+};
+
+exports.runAllTests = runAllTests;

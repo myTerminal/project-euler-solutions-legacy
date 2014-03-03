@@ -4,7 +4,7 @@ var arguments = process.argv,
     problemManager = require("./ProblemManager");
 
 if(problemNumber==="tests") {
-    require("./Tests");
+    require("./Tests").runAllTests();
     return;
 }
 
