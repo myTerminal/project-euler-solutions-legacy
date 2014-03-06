@@ -55,6 +55,7 @@ var problems = [new Problem("001", 233168),
 		new Problem("074", 402),
 		new Problem("081", 427337),
 		new Problem("089", 743),
+		new Problem("092", 8581146),
 		new Problem("099", 709)];
 
 var runAllTests = function () {
