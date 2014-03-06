@@ -54,6 +54,7 @@ var problems = [new Problem("001", 233168),
 		new Problem("067", 7273),
 		new Problem("074", 402),
 		new Problem("081", 427337),
+		new Problem("089", 743),
 		new Problem("099", 709)];
 
 var runAllTests = function () {
@@ -77,7 +78,7 @@ var testProblem = function (problem) {
 
     try {
 	actualResult = problemManager.getAnswer(problem.number);
-	printActualResult(problem);
+	printActualResult(actualResult);
 
 	if(actualResult==expectedResult)
 	    printSuccessMessage();
@@ -100,11 +101,11 @@ var testProblem = function (problem) {
 
 var printProblemHeader = function (problem) {
     console.log("\nRunning problem " + problem.number + "...");
-    console.log("Expected result: " + problem.expectedResult);
+    console.log("Expected result: " + problem.result);
 };
 
-var printActualResult = function (problem) {
-    console.log("Actual result: " + problem.actualResult);
+var printActualResult = function (actualResult) {
+    console.log("Actual result: " + actualResult);
 };
 
 var printSuccessMessage = function () {
