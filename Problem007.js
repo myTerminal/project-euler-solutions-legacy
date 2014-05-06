@@ -5,10 +5,11 @@ exports.run = function () {
     	count = 0,
     	prime;
 
-    for(var i=0; i<primes.length && !prime; i++) {
-	if(primes[i])
+    for (var i=0; i<primes.length && !prime; i++) {
+	if (primes[i])
 	    count++;
-	if(count>=10001)
+
+	if (count >= 10001)
 	    prime = primes[i];
     }
 
