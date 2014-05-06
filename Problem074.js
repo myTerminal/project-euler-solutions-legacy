@@ -1,7 +1,7 @@
 var common = require("./Common");
 
 exports.run = function () {
-    var myFactorial = new Memoizer(common.factorialMemoizable),
+    var myFactorial = new common.Memoizer(common.factorialMemoizable),
         limit = 1000000,
         input,
         terms,
@@ -40,4 +40,4 @@ exports.run = function () {
 
     console.log("count: " + count);
     return count;
-}
+};

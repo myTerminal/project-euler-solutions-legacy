@@ -1,135 +1,174 @@
-﻿addBigNumbers = function addBigNumbers(number1, number2) {
-    function addLastDigit(number1, number2, carry) {
-        var number1LSD = number1 ? parseInt(number1.substr(number1.length - 1, 1)) : 0,
-            number2LSD = number2 ? parseInt(number2.substr(number2.length - 1, 1)) : 0,
+﻿var addBigNumbers = function (number1, number2) {
+    var addLastDigit = function (number1, number2, carry) {
+        var number1LSD = number1 
+		? +(number1.substr(number1.length - 1, 1)) 
+		: 0,
+            number2LSD = number2 
+		? +(number2.substr(number2.length - 1, 1)) 
+		: 0,
             result = getSum(number1LSD, number2LSD, carry),
             newCarry = getCarry(number1LSD, number2LSD, carry);
-
-        return !number1 && !number2 ?
-            (carry || "") :
-            addLastDigit(number1.substr(0, number1.length - 1),
-                number2.substr(0, number2.length - 1),
-                newCarry) + result;
-    }
+	
+        return !number1 && !number2 
+	    ? (carry || "") 
+	    : addLastDigit(number1.substr(0, number1.length - 1),
+			   number2.substr(0, number2.length - 1),
+			   newCarry) + result;
+    },
+	getSum = function (a, b, c) {
+	    var d = (a + b + c).toString();
+	    return (d.length > 1) 
+		? d[1] 
+		: d;
+	},
+	getCarry = function (a, b, c) {
+	    var d = (a + b + c).toString();
+	    return (d.length > 1) 
+		? +(d[0]) 
+		: 0;
+	};
 
     return addLastDigit(number1, number2, 0);
-};
+}; 
 
-function getSum(a, b, c) {
-    var d = (a + b + c).toString();
-    return (d.length > 1) ? d[1] : d;
-};
-
-function getCarry(a, b, c) {
-    var d = (a + b + c).toString();
-    return (d.length > 1) ? parseInt(d[0]) : 0;
-};
-
-scaleBigNumber = function scaleBigNumber(number, scale) {
-    if(!scale)
-	return "0";
+var scaleBigNumber = function (number, scale) {
     var scaledNumber = "0";
-    for(var i=0; i<scale; i++)
+
+    if (!scale)
+	return "0";
+
+    for (var i=0; i<scale; i++)
 	scaledNumber = addBigNumbers(scaledNumber, number);
+
     return scaledNumber;
 };
 
-multiplyBigNumbers = function multiplyBigNumbers(number1, number2) {
+var multiplyBigNumbers = function (number1, number2) {
     var finalResult = "0",
         zeroPaddingLength,
-        currentScale;
-    for(var i=number2.length-1; i>=0; i--) {
-	currentDigit = parseInt(number2.substr(i, 1));
+        currentScale,
+	currentDigit,
+	getZeroPaddings = function (count) {
+	    var padding = "";
+
+	    for (var i=0; i<count; i++)
+		padding = padding + "0";
+
+	    return padding;
+	};
+    
+    for (var i=number2.length-1; i>=0; i--) {
+	currentDigit = +(number2.substr(i, 1));
 	zeroPaddingLength = (number2.length-1)-i;
 	currentScale = scaleBigNumber(number1, currentDigit);
-	finalResult = addBigNumbers(finalResult, currentScale + getZeroPaddings(zeroPaddingLength));
-    }
-    
-    function getZeroPaddings(count) {
-	var padding = "";
-	for(var i=0; i<count; i++)
-	    padding = padding + "0";
-	return padding;
+	finalResult = addBigNumbers(finalResult, currentScale 
+				    + getZeroPaddings(zeroPaddingLength));
     }
 
     return finalResult;
 };
 
-raiseBigNumber = function raiseBigNumber(number, power) {
-    if(!power)
-	return "1";
+var raiseBigNumber = function (number, power) {
     var raisedNumber = "1";
-    for(var i=0; i<power; i++)
+
+    if (!power)
+	return "1";
+    
+    for (var i=0; i<power; i++)
 	raisedNumber = multiplyBigNumbers(raisedNumber, number);
+
     return raisedNumber;
 };
 
-fibonacci = function fibonacci(term) {
-    return (term==1 || term==2) ? 1 : fibonacci(term-1) + fibonacci(term-2);
+var fibonacci = function (term) {
+    return (term==1 || term==2) 
+	? 1 
+	: fibonacci(term-1) + fibonacci(term-2);
 };
 
-fibonacciMemoizable = function fibonacciMemoizable(term) {
-    var func = (typeof(this) === "function") ? this : fibonacciMemoizable;
-    return (term==1 || term==2) ? 1 : func.call(this, term-1) + func.call(this, term-2);
+var fibonacciMemoizable = function (term) {
+    var func = (typeof(this) === "function") 
+	    ? this 
+	    : fibonacciMemoizable;
+
+    return (term == 1 || term == 2) 
+	? 1 
+	: func.call(this, term-1) + func.call(this, term-2);
 };
 
-fibonacciMemoizableBig = function fibonacciMemoizableBig(term) {
-    var func = (typeof(this) === "function") ? this : fibonacciMemoizableBig;
-    return (term==1 || term==2) ? "1" : addBigNumbers(func.call(this, term-1), func.call(this, term-2));
+var fibonacciMemoizableBig = function (term) {
+    var func = (typeof(this) === "function") 
+	    ? this 
+	    : fibonacciMemoizableBig;
+
+    return (term == 1 || term == 2) 
+	? "1" 
+	: addBigNumbers(func.call(this, term-1), func.call(this, term-2));
 };
 
-factorial = function factorial(term) {
-    return (term<2) ? 1 : term * factorial(term-1);
+var factorial = function (term) {
+    return (term < 2) 
+	? 1 
+	: term * factorial(term-1);
 };
 
-factorialMemoizable = function factorialMemoizable(term) {
-    var func = (typeof(this) === "function") ? this : factorialMemoizable;
-    return (term<1) ? 1 : term * func.call(this, term-1);
+var factorialMemoizable = function (term) {
+    var func = (typeof(this) === "function") 
+	    ? this 
+	    : factorialMemoizable;
+
+    return (term < 1) 
+	? 1 
+	: term * func.call(this, term-1);
 };
 
-Memoizer = function Memoizer(func) {
-    var lookUp = [];
-
-    var getValue = function (input) {
-	if(lookUp[input])
-	    return lookUp[input];
-	var value = func.call(getValue, input);
-	lookUp[input] = value;
-	return value;
-    };
+var Memoizer = function (func) {
+    var lookUp = [],
+	getValue = function (input) {
+	    if (lookUp[input])
+		return lookUp[input];
+	    
+	    var value = func.call(getValue, input);
+	    lookUp[input] = value;
+	    
+	    return value;
+	};
 
     return {
 	getValue: getValue
     };
 };
 
-MemoizerMultiInputs = function MemoizerMultiInputs(func) {
-    var lookUp = {};
-
-    var getValue = function (inputs) {
-	var inputsInString = inputs.join("_");
-	if(lookUp[inputsInString])
-	    return lookUp[inputsInString];
-	var value = func.apply(getValue, inputs);
-	lookUp[inputsInString] = value;
-	return value;
-    };
+var MemoizerMultiInputs = function (func) {
+    var lookUp = {},
+	getValue = function (inputs) {
+	    var inputsInString = inputs.join("_");
+	    
+	    if (lookUp[inputsInString])
+		return lookUp[inputsInString];
+	    
+	    var value = func.apply(getValue, inputs);
+	    lookUp[inputsInString] = value;
+	    
+	    return value;
+	};
 
     return {
 	getValue: getValue
     };
 };
 
-getPrimesBelowNumber = function getPrimesBelowNumber(limit) {
+var getPrimesBelowNumber = function (limit) {
     var numbers = [];
 
-    for(i=0; i<limit; i++)
+    for (var i=0; i<limit; i++)
 	numbers.push(i);
+    
     numbers[1] = 0;
 
-    for(i=2; i<limit; i++)
-	for(j=i*i; j<limit; j=j+i)
-            if(j%i===0)
+    for (var i=2; i<limit; i++)
+	for (var j=i*i; j<limit; j=j+i)
+            if (j%i===0)
 		numbers[j]=0;
 
     return numbers;

@@ -1,10 +1,11 @@
 var common = require("./Common");
 
 exports.run = function () {
-    var myFactorial = new Memoizer(common.factorialMemoizable),
+    var myFactorial = new common.Memoizer(common.factorialMemoizable),
         numbers = [],
         sumOfFactorialsOfDigits,
         sum = 0;
+
     for(var i=10; i<1000000 ; i++) {
 	sumOfFactorialsOfDigits = getSumOfFactorialsOfDigits(i);
 	if(sumOfFactorialsOfDigits==i) {
@@ -23,4 +24,4 @@ exports.run = function () {
 
     console.log("sum: " + sum);
     return sum;
-}
+};
