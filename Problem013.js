@@ -100,12 +100,15 @@ exports.run = function () {
                     "77158542502016545090413245809786882778948721859617",
                     "72107838435069186155435662884062257473692284509516",
                     "20849603980134001723930671666823555245252804609722",
-                    "53503534226472524250874054075591789781264330331690"];
-    var initialSum = theArray[0],
+                    "53503534226472524250874054075591789781264330331690"],
+	initialSum = theArray[0],
         output;
-    for (i = 1; i <= theArray.length - 1; i++)
+
+    for (var i=1; i<=theArray.length-1; i++)
 	initialSum = common.addBigNumbers(initialSum, theArray[i]);
+
     output = initialSum.substr(0, 10);
+
     console.log(output);
     return output;
-}
+};
