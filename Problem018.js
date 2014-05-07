@@ -15,19 +15,19 @@ exports.run = function () {
 	[91, 71, 52, 38, 17, 14, 91, 43, 58, 50, 27, 29, 48],
 	[63, 66, 04, 68, 89, 53, 67, 30, 73, 16, 69, 87, 40, 31],
 	[04, 62, 98, 27, 23, 09, 70, 98, 73, 93, 38, 53, 60, 04, 23]
-    ];
-
-    var upper,
+    ],
+	upper,
         left,
         right,
         sum;
-    for(var i=triangle.length-2; i>=0; i--)
-	for(var j=0; j<triangle[i].length; j++) {
+
+    for (var i=triangle.length-2; i>=0; i--)
+	for (var j=0; j<triangle[i].length; j++) {
 	    upper = triangle[i][j];
 	    left = triangle[i+1][j];
 	    right = triangle[i+1][j+1];
 
-	    if(left>right)
+	    if(left > right)
 		upper = upper + left;
 	    else
 		upper = upper + right;
@@ -36,6 +36,7 @@ exports.run = function () {
 	}
     
     sum = triangle[0][0];
+
     console.log("sum: " + sum);
     return sum;
 };
