@@ -1,98 +1,4 @@
-var fs = require('fs');
-
 exports.run = function () {
-    
-    function solveSudokuGrid(inputGrid) {
-	inputGrid = cloneGrid(inputGrid);
-
-	if(isSolved(inputGrid))
-	    return inputGrid;
-
-	var emptyCell = findEmptyCell(inputGrid),
-	    cellX = emptyCell[0],
-	    cellY = emptyCell[1],
-	    taken = getHNumbers(inputGrid, cellY)
-		.concat(getVNumbers(inputGrid, cellX))
-		.concat(getSquareNumbers(inputGrid, cellX, cellY)),
-	    takenRegEx = eval("/[" + taken.join("") + "]+/g"),
-	    possibleValues = "123456789".replace(takenRegEx, "").split(""),
-	    output;
-
-	for(var i=0; i<possibleValues.length; i++) {
-	    inputGrid[cellY][cellX] = +(possibleValues[i]);
-	    output = solveSudokuGrid(inputGrid);
-
-	    if(output)
-		return output;
-	}
-
-	return "";
-    }
-
-    function findEmptyCell(grid) {
-	for(var ix=0; ix<9; ix++)
-	    for(var iy=0; iy<9; iy++)
-		if(!grid[iy][ix])
-		    return [ix, iy];
-	return [];
-    }
-
-    function isSolved(grid) {
-	for(var ix=0; ix<9; ix++)
-	    for(var iy=0; iy<9; iy++)
-		if(!grid[iy][ix])
-		    return false;
-	return true;
-    }
-
-    function getHNumbers(grid, y) {
-	for(var i=0, numbers=[]; i<9; i++)
-	    if(grid[y][i])
-		numbers.push(grid[y][i]);
-	return numbers.sort();
-    }
-
-    function getVNumbers(grid, x) {
-	for(var i=0, numbers=[]; i<9; i++)
-	    if(grid[i][x])
-		numbers.push(grid[i][x]);
-	return numbers.sort();
-    }
-
-    function getSquareNumbers(grid, x, y) {
-	var minX = getMinOfSquare(x),
-	    minY = getMinOfSquare(y),
-	    maxX = getMaxOfSquare(x),
-	    maxY = getMaxOfSquare(y),
-	    numbers = [];
-	for(ix=minX; ix<=maxX; ix++)
-	    for(iy=minY; iy<=maxY; iy++)
-		if(grid[iy][ix])
-		    numbers.push(grid[iy][ix]);
-	return numbers.sort();
-    }
-
-    function getMinOfSquare(index) {
-	return index - (index % 3);
-    }
-
-    function getMaxOfSquare(index) {
-	return index - (index % 3) + 2;
-    }
-
-    function cloneGrid(grid) {
-	var outputArray = [];
-	for(var i=0; i<grid.length; i++)
-	    outputArray.push(grid[i].slice());
-	return outputArray;
-    }
-
-    function getThreeDigitNumber(grid) {
-	return +(grid[0][0].toString() + 
-		 grid[0][1].toString() + 
-		 grid[0][2].toString());
-    }
-
     var lines,
 	solvedGrid,
 	threeDigitNumber,
@@ -546,9 +452,98 @@ exports.run = function () {
 		  [0,1,0,8,0,0,0,5,0],
 		  [0,0,9,0,4,0,3,0,1],
 		  [0,0,0,7,0,2,0,0,0],
-		  [0,0,0,0,0,8,0,0,6]]];
+		  [0,0,0,0,0,8,0,0,6]]],
+	solveSudokuGrid = function (inputGrid) {
+	    inputGrid = cloneGrid(inputGrid);
 
-    for(var index=0; index<grids.length; index++) {
+	    if (isSolved(inputGrid))
+		return inputGrid;
+
+	    var emptyCell = findEmptyCell(inputGrid),
+		cellX = emptyCell[0],
+		cellY = emptyCell[1],
+		taken = getHNumbers(inputGrid, cellY)
+		    .concat(getVNumbers(inputGrid, cellX))
+		    .concat(getSquareNumbers(inputGrid, cellX, cellY)),
+		takenRegEx = eval("/[" + taken.join("") + "]+/g"),
+		possibleValues = "123456789".replace(takenRegEx, "").split(""),
+		output;
+
+	    for (var i=0; i<possibleValues.length; i++) {
+		inputGrid[cellY][cellX] = +(possibleValues[i]);
+		output = solveSudokuGrid(inputGrid);
+
+		if (output)
+		    return output;
+	    }
+
+	    return "";
+	},
+	findEmptyCell = function (grid) {
+	    for (var ix=0; ix<9; ix++)
+		for (var iy=0; iy<9; iy++)
+		    if (!grid[iy][ix])
+			return [ix, iy];
+
+	    return [];
+	},
+	isSolved = function (grid) {
+	    for (var ix=0; ix<9; ix++)
+		for (var iy=0; iy<9; iy++)
+		    if (!grid[iy][ix])
+			return false;
+
+	    return true;
+	},
+	getHNumbers = function (grid, y) {
+	    for (var i=0, numbers=[]; i<9; i++)
+		if (grid[y][i])
+		    numbers.push(grid[y][i]);
+
+	    return numbers.sort();
+	},
+	getVNumbers = function (grid, x) {
+	    for (var i=0, numbers=[]; i<9; i++)
+		if (grid[i][x])
+		    numbers.push(grid[i][x]);
+
+	    return numbers.sort();
+	},
+	getSquareNumbers = function (grid, x, y) {
+	    var minX = getMinOfSquare(x),
+		minY = getMinOfSquare(y),
+		maxX = getMaxOfSquare(x),
+		maxY = getMaxOfSquare(y),
+		numbers = [];
+
+	    for (var ix=minX; ix<=maxX; ix++)
+		for (var iy=minY; iy<=maxY; iy++)
+		    if (grid[iy][ix])
+			numbers.push(grid[iy][ix]);
+
+	    return numbers.sort();
+	},
+	getMinOfSquare = function (index) {
+	    return index - (index % 3);
+	},
+	getMaxOfSquare = function (index) {
+	    return index - (index % 3) + 2;
+	},
+	cloneGrid = function (grid) {
+	    var outputArray = [];
+
+	    for (var i=0; i<grid.length; i++)
+		outputArray.push(grid[i].slice());
+
+	    return outputArray;
+	},
+	getThreeDigitNumber = function (grid) {
+	    return +(grid[0][0].toString() + 
+		     grid[0][1].toString() + 
+		     grid[0][2].toString());
+	};
+
+    for (var index=0; index<grids.length; index++) {
     	solvedGrid = solveSudokuGrid(grids[index]);
     	threeDigitNumber = getThreeDigitNumber(solvedGrid);
     	sum += threeDigitNumber;
@@ -557,10 +552,3 @@ exports.run = function () {
     console.log("sum: " + sum);
     return sum;
 };
-
-
-
-
-
-
-

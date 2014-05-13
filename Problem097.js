@@ -3,7 +3,7 @@
 exports.run = function () {
     var init = "2",
 	power = 7830457,
-        output = 0,
+        output,
 	getLastTenDigits = function (numberInString) {
 	    var len = numberInString.length;
 	    return numberInString.substring(len - 10);
