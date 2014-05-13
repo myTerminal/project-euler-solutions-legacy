@@ -84,53 +84,55 @@ exports.run = function () {
 	[5304, 5499, 564, 2801, 679, 2653, 1783, 3608, 7359, 7797, 3284, 796, 3222, 437, 7185, 6135, 8571, 2778, 7488, 5746, 678, 6140, 861, 7750, 803, 9859, 9918, 2425, 3734, 2698, 9005, 4864, 9818, 6743, 2475, 132, 9486, 3825, 5472, 919, 292, 4411, 7213, 7699, 6435, 9019, 6769, 1388, 802, 2124, 1345, 8493, 9487, 8558, 7061, 8777, 8833, 2427, 2238, 5409, 4957, 8503, 3171, 7622, 5779, 6145, 2417, 5873, 5563, 5693, 9574, 9491, 1937, 7384, 4563, 6842, 5432, 2751, 3406, 7981]
     ],
         sums = [],
-        minSum;
+        minSum,
+	getMinSum = function (posX, posY, direction) {
+	    var func = (typeof(this) === "function")
+		    ? this
+		    : getMinSum,
+		result;
 
-    function getMinSum(posX, posY, direction) {
-	var func = (typeof(this) === "function") ? this : getMinSum,
-	    result;
-
-	if (posY==grid[0].length-1)
-	    result =  grid[posX][posY];
-	else if (posX==grid.length-1) {
-	    if (direction && direction==1) {
+	    if (posY==grid[0].length-1)
+		result =  grid[posX][posY];
+	    else if (posX==grid.length-1) {
+		if (direction && direction==1) {
+		    result =  grid[posX][posY] 
+			+ func.call(this, [posX, posY+1]);		
+		} else {
+		    result =  grid[posX][posY] 
+			+ Math.min(func.call(this, [posX-1, posY], -1),
+				   func.call(this, [posX, posY+1]));
+		}
+	    } else if (posX==0) {
+		if (direction && direction==-1) {
+		    result =  grid[posX][posY] 
+			+ func.call(this, [posX, posY+1]);		
+		} else {
+		    result =  grid[posX][posY] 
+			+ Math.min(func.call(this, [posX+1, posY, 1]),
+				   func.call(this, [posX, posY+1]));
+		}
+	    } else if (direction) {
 		result =  grid[posX][posY] 
-		    + func.call(this, [posX, posY+1]);		
+		    + Math.min(func.call(this, [posX+direction, posY, direction]), 
+			       func.call(this, [posX, posY+1]));
 	    } else {
 		result =  grid[posX][posY] 
-		    + Math.min(func.call(this, [posX-1, posY], -1),
+		    + Math.min(func.call(this, [posX-1, posY, -1]), 
+			       func.call(this, [posX+1, posY, 1]), 
 			       func.call(this, [posX, posY+1]));
 	    }
-	} else if (posX==0) {
-	    if (direction && direction==-1) {
-		result =  grid[posX][posY] 
-		    + func.call(this, [posX, posY+1]);		
-	    } else {
-		result =  grid[posX][posY] 
-		    + Math.min(func.call(this, [posX+1, posY, 1]),
-			       func.call(this, [posX, posY+1]));
-	    }
-	} else if (direction) {
-	    result =  grid[posX][posY] 
-		+ Math.min(func.call(this, [posX+direction, posY, direction]), 
-			   func.call(this, [posX, posY+1]));
-	} else {
-	    result =  grid[posX][posY] 
-		+ Math.min(func.call(this, [posX-1, posY, -1]), 
-			   func.call(this, [posX+1, posY, 1]), 
-			   func.call(this, [posX, posY+1]));
-	}
 
-	return result;
-    }
+	    return result;
+	};
 
     var myMemoizer = new common.MemoizerMultiInputs(getMinSum);
-    for(var i=grid.length-1; i>-1; i--)
-	for(var j=grid[0].length-1; j>-1; j--)
+    for (var i=grid.length-1; i>-1; i--)
+	for (var j=grid[0].length-1; j>-1; j--)
 	    myMemoizer.getValue([j ,i]);
 
-    for(var i=0; i<grid.length; i++)
+    for (i=0; i<grid.length; i++)
 	sums.push(myMemoizer.getValue([i, 0]));
+
     minSum = Math.min.apply(Math, sums);
 
     console.log("minSum: " + minSum);

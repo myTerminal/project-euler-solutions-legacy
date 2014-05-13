@@ -7,87 +7,85 @@ var RomanConvertor = function () {
 	X: 10,
 	V: 5,
 	I: 1
-    };
+    },
+	getDecimalValueForDigit = function (romanDigit) {
+	    return +(romanLiterals[romanDigit]);
+	},
+	toDecimal = function (roman) {
+	    var sum = 0,
+		previousValue,
+		currentValue;
 
-    var getDecimalValueForDigit = function (romanDigit) {
-	return parseInt(romanLiterals[romanDigit]);
-    };
+	    for (var i=0; i<roman.length; i++) {
+		currentValue = getDecimalValueForDigit(roman[i]);
 
-    var toDecimal = function (roman) {
-	var sum = 0,
-	previousValue,
-	currentValue;
+		if (previousValue && previousValue<currentValue)
+		    sum += (2 * (-previousValue) + currentValue);
+		else
+		    sum += currentValue;
 
-	for(var i=0; i<roman.length; i++) {
-	    currentValue = getDecimalValueForDigit(roman[i]);
-	    if(previousValue && previousValue<currentValue)
-		sum += (2 * (-previousValue) + currentValue);
-	    else
-		sum += currentValue;
-	    previousValue = currentValue;
-	}
-
-	return sum;
-    };
-
-    var reduceNumber = function (denomination, range, number, romanString) {
-	var decimalDenomination = toDecimal(denomination),
-	decimalRange = toDecimal(range);
-
-	while(number>=(decimalDenomination-decimalRange)) {
-	    if(number>=(decimalDenomination-decimalRange) && 
-	       number<decimalDenomination) {
-		romanString += (range + denomination);
-		number -= (decimalDenomination - decimalRange);
+		previousValue = currentValue;
 	    }
 
-	    if(number>=decimalDenomination) {
-		romanString += denomination;
-		number -= decimalDenomination;
-	    }
-	}
+	    return sum;
+	},
+	reduceNumber = function (denomination, range, number, romanString) {
+	    var decimalDenomination = toDecimal(denomination),
+		decimalRange = toDecimal(range);
 
-	return {
-	    number: number,
-	    romanString: romanString
+	    while (number >= (decimalDenomination - decimalRange)) {
+		if (number >= (decimalDenomination - decimalRange)
+		    && number<decimalDenomination) {
+
+		    romanString += (range + denomination);
+		    number -= (decimalDenomination - decimalRange);
+		}
+
+		if (number >= decimalDenomination) {
+		    romanString += denomination;
+		    number -= decimalDenomination;
+		}
+	    }
+
+	    return {
+		number: number,
+		romanString: romanString
+	    };
+	},
+	toRoman = function (number) {
+	    var romanString = "",
+		reducedSet,
+		denominationRanges = {
+		    M: 'C',
+		    D: 'C',
+		    C: 'X',
+		    L: 'X',
+		    X: 'I',
+		    V: 'I'
+		};
+
+	    while (number>0) {
+		for (var range in denominationRanges) {
+		    reducedSet = reduceNumber(range, denominationRanges[range],
+					      number, romanString);
+		    number = reducedSet.number;
+		    romanString = reducedSet.romanString;
+		}
+
+		if (number > 0) {
+		    romanString += "I";
+		    number--;
+		}
+	    }
+
+	    return romanString;
+	},
+	optimizeRoman = function (romanString) {
+	    return toRoman(toDecimal(romanString));
+	},
+	calculateExtraCharacters = function (romanString) {
+	    return romanString.length - optimizeRoman(romanString).length;
 	};
-    };
-
-    var toRoman = function (number) {
-	var romanString = "",
-	reducedSet,
-	denominationRanges = {
-	    M: 'C',
-	    D: 'C',
-	    C: 'X',
-	    L: 'X',
-	    X: 'I',
-	    V: 'I'
-	};
-
-	while(number>0) {
-	    for(var range in denominationRanges) {
-		reducedSet = reduceNumber(range, denominationRanges[range], number, romanString);
-		number = reducedSet.number;
-		romanString = reducedSet.romanString;
-	    }
-
-	    if(number>0) {
-		romanString += "I";
-		number--;
-	    }
-	}
-
-	return romanString;
-    };
-
-    var optimizeRoman = function (romanString) {
-	return toRoman(toDecimal(romanString));
-    };
-
-    var calculateExtraCharacters = function (romanString) {
-	return romanString.length - optimizeRoman(romanString).length;
-    };
 
     return {
 	toDecimal: toDecimal,
@@ -1103,7 +1101,7 @@ exports.run = function () {
 	"XXXXVIIII"
     ];
 
-    for(var i=0, count=0; i<romanStrings.length; i++)
+    for (var i=0, count=0; i<romanStrings.length; i++)
 	count += RomanConvertor.calculateExtraCharacters(romanStrings[i]);
     
     console.log("count: " + count);
