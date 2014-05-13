@@ -13,9 +13,15 @@ exports.run = function () {
 		    1: 1,
 		    145: 1 },
         sumOfFactorialOfDigits,
-        count = 0;
+        count = 0,
+	getSumOfFactorialsOfDigits = function (number) {
+	    var stringNumber = number.toString();
+	    for(var i=0, sum=0; i<stringNumber.length; i++)
+		sum = sum +  myFactorial.getValue(parseInt(stringNumber[i]));
+	    return sum;
+	};
 
-    for(var i=1; i<limit ; i++, terms=1) {
+    for (var i=1; i<limit ; i++, terms=1) {
 	sumOfFactorialOfDigits = i;
 	do {
 	    input = sumOfFactorialOfDigits;
@@ -24,18 +30,13 @@ exports.run = function () {
 	    if(input == sumOfFactorialOfDigits)
 		loopers[input] = input;
 	}
-	while(sumOfFactorialOfDigits!=i && !loopers[sumOfFactorialOfDigits]);
+	while (sumOfFactorialOfDigits!=i 
+	       && !loopers[sumOfFactorialOfDigits]);
 
 	chainLengths[i] = terms;
-	if(terms == 58)
-	    count++;
-    }
 
-    function getSumOfFactorialsOfDigits(number) {
-	var stringNumber = number.toString();
-	for(var i=0, sum=0; i<stringNumber.length; i++)
-	    sum = sum +  myFactorial.getValue(parseInt(stringNumber[i]));
-	return sum;
+	if (terms == 58)
+	    count++;
     }
 
     console.log("count: " + count);
