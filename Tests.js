@@ -63,7 +63,8 @@ var problems = [new Problem("001", 233168),
 		new Problem("096", 24702),
 		new Problem("097", "8739992577"),
 		new Problem("099", 709),
-		new Problem("102", 228)];
+		new Problem("102", 228),
+		new Problem("112", "1587000")];
 
 var runAllTests = function () {
     var failure;
