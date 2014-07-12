@@ -1,9 +1,5 @@
-var problemManager = require("./ProblemManager");
-
-var Problem = function (number, result) {
-    this.number = number;
-    this.result = result;
-};
+var problemManager = require("./ProblemManager"),
+    Problem = problemManager.Problem;
 
 var problems = [new Problem("001", 233168),
 		new Problem("002", 4613732),
@@ -66,69 +62,4 @@ var problems = [new Problem("001", 233168),
 		new Problem("102", 228),
 		new Problem("112", "1587000")];
 
-var runAllTests = function () {
-    var failure;
-    for(var i=0; i<problems.length; i++) {
-	if(!testProblem(problems[i]))
-	    failure = true;
-    }
-
-    if(failure)
-	console.error("\nSOME TESTS FAILED!\n");
-    else
-	console.log("\nAll " + problems.length + " tests passed!\n");
-};
-
-var testProblem = function (problem) {
-    var expectedResult = problem.result,
-        actualResult;
-
-    printProblemHeader(problem);
-
-    try {
-	actualResult = problemManager.getAnswer(problem.number);
-	printActualResult(actualResult);
-
-	if(actualResult==expectedResult)
-	    printSuccessMessage();
-	else {
-	    printFailureMessage();
-	    return false;
-	}
-    }
-    catch(e) {
-	if(e.code==="MODULE_NOT_FOUND")
-	    console.log("Problem not solved yet!");
-	else {
-	    printExceptionMessage(problem);
-	    return false;
-	}
-    }
-
-    return true;
-};
-
-var printProblemHeader = function (problem) {
-    console.log("\nRunning problem " + problem.number + "...");
-    console.log("Expected result: " + problem.result);
-};
-
-var printActualResult = function (actualResult) {
-    console.log("Actual result: " + actualResult);
-};
-
-var printSuccessMessage = function () {
-    console.log("Test successful!");
-};
-
-var printFailureMessage = function () {
-    console.error("*** FAILURE! ***");
-};
-
-var printExceptionMessage = function (problem) {
-    console.log("********************************");
-    console.log("Exception in problem " + problem.number);
-    console.log("********************************");
-};
-
-exports.runAllTests = runAllTests;
+exports.problems = problems;

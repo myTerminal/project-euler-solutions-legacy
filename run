@@ -1,14 +1,15 @@
 #!/usr/bin/env node
 var arguments = process.argv,
     problemNumber = arguments[2],
-    problemManager = require("./ProblemManager");
+    problemManager = require("./ProblemManager"),
+    tests = require("./Tests");
 
-if(problemNumber==="tests") {
-    require("./Tests").runAllTests();
+if (problemNumber==="tests") {
+    problemManager.runAllTests(tests.problems);
     return;
 }
 
-if(problemNumber && problemNumber>0)
+if (problemNumber && problemNumber>0)
     problemManager.runProblem(problemNumber);
 else
     console.log("Please specify a problem to run.");
