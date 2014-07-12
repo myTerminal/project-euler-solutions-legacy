@@ -1,7 +1,7 @@
-var problemManager = require("./ProblemManager"),
-    Problem = problemManager.Problem;
-
-var problems = [new Problem("001", 233168),
+var assert = require("assert"),
+    problemManager = new require("./ProblemManager")(),
+    Problem = problemManager.Problem,
+    problems = [new Problem("001", 233168),
 		new Problem("002", 4613732),
 		new Problem("003", 6857),
 		new Problem("004", 906609),
@@ -60,6 +60,15 @@ var problems = [new Problem("001", 233168),
 		new Problem("097", "8739992577"),
 		new Problem("099", 709),
 		new Problem("102", 228),
-		new Problem("112", "1587000")];
+		new Problem("112", "1587000")];	
 
-exports.problems = problems;
+describe('Trying solutions to all problems', function () {
+    for (var i=0; i<problems.length; i++)
+	(function (i) {
+	    var currentProblem = problems[i];
+	    it('Problem ' + currentProblem.number, function () {
+		assert.equal(currentProblem.result, 
+			     problemManager.getResult(currentProblem.number));
+	    });
+	})(i);
+});

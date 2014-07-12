@@ -1,13 +1,7 @@
 #!/usr/bin/env node
 var arguments = process.argv,
     problemNumber = arguments[2],
-    problemManager = require("./ProblemManager"),
-    tests = require("./Tests");
-
-if (problemNumber==="tests") {
-    problemManager.runAllTests(tests.problems);
-    return;
-}
+    problemManager = new require("./ProblemManager")();
 
 if (problemNumber && problemNumber>0)
     problemManager.runProblem(problemNumber);

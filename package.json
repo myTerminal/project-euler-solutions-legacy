@@ -9,7 +9,7 @@
 	"mocha": "~1.17.1"
     },
     "scripts": {
-	"test": "node run tests"
+	"test": "mocha Tests.js -R spec"
     },
     "repository": {
 	"type": "git",
