@@ -15,4 +15,4 @@ Running Tests:
 --------------
 You can run solution for all the problems at once to see if any of the results are deviating. You can do that by typing the following command:
 
-    node run tests
+    npm test
