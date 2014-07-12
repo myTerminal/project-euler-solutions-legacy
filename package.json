@@ -1,20 +1,23 @@
 {
-  "name": "ProjectEulerSolutions",
-  "version": "0.9.0",
-  "description": "Solutions to my ProjectEuler problems",
-  "dependencies": {
-    "underscore": "~1.5.2"
-  },
-  "devDependencies": {
-    "mocha": "~1.17.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/myTerminal/ProjectEulerSolutions.git"
-  },
-  "keywords": [
-    "ProjectEuler"
-  ],
-  "author": "Mohammed Ismail Ansari",
-  "license": "BSD-2-Clause",
+    "name": "ProjectEulerSolutions",
+    "version": "0.9.0",
+    "description": "Solutions to my ProjectEuler problems",
+    "dependencies": {
+	"underscore": "~1.5.2"
+    },
+    "devDependencies": {
+	"mocha": "~1.17.1"
+    },
+    "scripts": {
+	"test": "node run tests"
+    },
+    "repository": {
+	"type": "git",
+	"url": "https://github.com/myTerminal/ProjectEulerSolutions.git"
+    },
+    "keywords": [
+	"ProjectEuler"
+    ],
+    "author": "Mohammed Ismail Ansari",
+    "license": "BSD-2-Clause"
 }
