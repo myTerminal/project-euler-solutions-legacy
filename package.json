@@ -5,7 +5,8 @@
   "dependencies": {
     "underscore": "~1.6.0",
     "coveralls": "~2.11.1",
-    "mocha-lcov-reporter": "0.0.1"
+    "mocha-lcov-reporter": "0.0.1",
+    "istanbul": "~0.3.0"
   },
   "devDependencies": {
     "mocha": "~1.20.1"
