@@ -6,12 +6,13 @@
     "underscore": "~1.6.0",
     "coveralls": "~2.11.1",
     "mocha-lcov-reporter": "0.0.1",
-    "istanbul": "~0.3.0"
+    "package-script": "0.0.7"
   },
   "devDependencies": {
     "mocha": "~1.20.1"
   },
   "scripts": {
+    "install": "node installer.js",
     "test": "mocha Tests.js -R spec"
   },
   "repository": {
