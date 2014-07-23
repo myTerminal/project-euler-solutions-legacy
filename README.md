@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/myTerminal/ProjectEulerSolutions.svg?branch=master)](https://travis-ci.org/myTerminal/ProjectEulerSolutions)
+[![Code Climate](https://codeclimate.com/github/myTerminal/ProjectEulerSolutions.png)](https://codeclimate.com/github/myTerminal/ProjectEulerSolutions)
 [![Coverage Status](https://img.shields.io/coveralls/myTerminal/ProjectEulerSolutions.svg)](https://coveralls.io/r/myTerminal/ProjectEulerSolutions?branch=master)
 [![Dependency Status](https://david-dm.org/myTerminal/ProjectEulerSolutions.svg)](https://david-dm.org/myTerminal/ProjectEulerSolutions)
 [![devDependency Status](https://david-dm.org/myTerminal/ProjectEulerSolutions/dev-status.svg)](https://david-dm.org/myTerminal/ProjectEulerSolutions#info=devDependencies)
