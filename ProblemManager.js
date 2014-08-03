@@ -36,7 +36,7 @@ module.exports = function () {
 
     var getResult = function (problemNumber) {
 	var paddedProblemNumber = getPaddedProblemNumber(problemNumber);
-	return require("./Problem" + paddedProblemNumber).run();
+	return require("./Solutions/Problem" + paddedProblemNumber).run();
     };
     
     return {
