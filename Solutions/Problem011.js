@@ -1,3 +1,5 @@
+/*global exports*/
+
 exports.run = function () {
     var grid = [
         [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
@@ -21,57 +23,66 @@ exports.run = function () {
         [20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54],
         [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
     ],
+        i,
+        j,
+        k,
         list = [],
         currentProduct,
         output = 0;
     
-    for (var i=0; i<grid.length; i++) {
-        for (var j=0; j<=grid.length-4; j++) {
+    for (i=0; i<grid.length; i++) {
+        for (j=0; j<=grid.length-4; j++) {
             currentProduct = 1;
 
-            for (var k=j; k<j+4; k++)
+            for (k=j; k<j+4; k++) {
                 currentProduct = currentProduct * grid[i][k];
+            }
 
             list.push(currentProduct);
         }
     }
 
-    for (var i=0; i<grid.length; i++) {
-        for (var j=0; j<=grid.length-4; j++) {
+    for (i=0; i<grid.length; i++) {
+        for (j=0; j<=grid.length-4; j++) {
             currentProduct = 1;
             
-            for (var k=j; k<j+4; k++)
+            for (k=j; k<j+4; k++) {
                 currentProduct = currentProduct * grid[k][i];
+            }
 
             list.push(currentProduct);
         }
     }
 
-    for (var i=0; i<=grid.length-4; i++) {
-        for (var j=0; j<=grid.length-4; j++) {
+    for (i=0; i<=grid.length-4; i++) {
+        for (j=0; j<=grid.length-4; j++) {
             currentProduct = 1;
 
-            for (var k=0; k<4; k++)
+            for (k=0; k<4; k++) {
                 currentProduct = currentProduct * grid[i+k][j+k];
+            }
 
             list.push(currentProduct);
         }
     }
 
-    for (var i=3; i<=grid.length-1; i++) {
-        for (var j=0; j<=grid.length-4; j++) {
+    for (i=3; i<=grid.length-1; i++) {
+        for (j=0; j<=grid.length-4; j++) {
             currentProduct = 1;
 
-            for (var k=0; k<4; k++)
+            for (k=0; k<4; k++) {
                 currentProduct = currentProduct * grid[i-k][j+k];
+            }
 
             list.push(currentProduct);
         }
     }
 
-    for (var i=0; i<list.length; i++)
-        if (list[i] > output)
+    for (i=0; i<list.length; i++) {
+        if (list[i] > output) {
             output = list[i];
+        }
+    }
 
     console.log("output: " + output);
     return output;
