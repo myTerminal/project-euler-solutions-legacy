@@ -4,6 +4,7 @@
 [![Dependency Status](https://david-dm.org/myTerminal/ProjectEulerSolutions.svg)](https://david-dm.org/myTerminal/ProjectEulerSolutions)
 [![devDependency Status](https://david-dm.org/myTerminal/ProjectEulerSolutions/dev-status.svg)](https://david-dm.org/myTerminal/ProjectEulerSolutions#info=devDependencies)
 [![peer Dependency Status](https://david-dm.org/myTerminal/ProjectEulerSolutions/peer-status.svg)](https://david-dm.org/myTerminal/ProjectEulerSolutions#info=peerDependencies)
+[![License](https://img.shields.io/badge/LICENSE-GPL%20v3.0-blue.svg)](https://www.gnu.org/licenses/gpl.html)
 
 ProjectEulerSolutions
 =====================
