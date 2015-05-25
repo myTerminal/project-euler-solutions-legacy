@@ -1,11 +1,11 @@
 # project-euler-solutions
 
-[![Build Status](https://travis-ci.org/myTerminal/ProjectEulerSolutions.svg?branch=master)](https://travis-ci.org/myTerminal/ProjectEulerSolutions)
-[![Code Climate](https://codeclimate.com/github/myTerminal/ProjectEulerSolutions.png)](https://codeclimate.com/github/myTerminal/ProjectEulerSolutions)
-[![Coverage Status](https://img.shields.io/coveralls/myTerminal/ProjectEulerSolutions.svg)](https://coveralls.io/r/myTerminal/ProjectEulerSolutions?branch=master)
-[![Dependency Status](https://david-dm.org/myTerminal/ProjectEulerSolutions.svg)](https://david-dm.org/myTerminal/ProjectEulerSolutions)
-[![devDependency Status](https://david-dm.org/myTerminal/ProjectEulerSolutions/dev-status.svg)](https://david-dm.org/myTerminal/ProjectEulerSolutions#info=devDependencies)
-[![peer Dependency Status](https://david-dm.org/myTerminal/ProjectEulerSolutions/peer-status.svg)](https://david-dm.org/myTerminal/ProjectEulerSolutions#info=peerDependencies)
+[![Build Status](https://travis-ci.org/myTerminal/project-euler-solutions.svg?branch=master)](https://travis-ci.org/myTerminal/project-euler-solutions)
+[![Code Climate](https://codeclimate.com/github/myTerminal/project-euler-solutions.png)](https://codeclimate.com/github/myTerminal/project-euler-solutions)
+[![Coverage Status](https://img.shields.io/coveralls/myTerminal/project-euler-solutions.svg)](https://coveralls.io/r/myTerminal/project-euler-solutions?branch=master)
+[![Dependency Status](https://david-dm.org/myTerminal/project-euler-solutions.svg)](https://david-dm.org/myTerminal/project-euler-solutions)
+[![devDependency Status](https://david-dm.org/myTerminal/project-euler-solutions/dev-status.svg)](https://david-dm.org/myTerminal/project-euler-solutions#info=devDependencies)
+[![peer Dependency Status](https://david-dm.org/myTerminal/project-euler-solutions/peer-status.svg)](https://david-dm.org/myTerminal/project-euler-solutions#info=peerDependencies)
 [![License](https://img.shields.io/badge/LICENSE-GPL%20v3.0-blue.svg)](https://www.gnu.org/licenses/gpl.html)
 
 Solutions to the [Project Euler](https://projecteuler.net/progress=myTerminal) problems I have solved yet
