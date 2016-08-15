@@ -1,5 +1,5 @@
 {
-  "name": "ProjectEulerSolutions",
+  "name": "project-euler-solutions",
   "version": "0.9.0",
   "description": "Solutions to my ProjectEuler problems",
   "dependencies": {
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/myTerminal/ProjectEulerSolutions.git"
+    "url": "https://github.com/myTerminal/project-euler-solutions.git"
   },
   "keywords": [
     "ProjectEuler"
