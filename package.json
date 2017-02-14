@@ -2,6 +2,7 @@
   "name": "project-euler-solutions",
   "version": "0.9.0",
   "description": "Solutions to my ProjectEuler problems",
+  "main": "run",
   "dependencies": {
     "underscore": "~1.6.0",
     "coveralls": "~2.11.1",
@@ -20,8 +21,12 @@
     "type": "git",
     "url": "https://github.com/myTerminal/project-euler-solutions.git"
   },
+  "bugs": {
+    "url": "https://github.com/myTerminal/ProjectEulerSolutions/issues"
+  },
+    "homepage": "https://github.com/myTerminal/ProjectEulerSolutions#readme",
   "keywords": [
-    "ProjectEuler"
+    "project-euler"
   ],
   "author": "Mohammed Ismail Ansari <team.terminal@gmail.com>",
   "license": "GPL-3.0"
