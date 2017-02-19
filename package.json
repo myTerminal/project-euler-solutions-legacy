@@ -7,14 +7,13 @@
     "underscore": "~1.6.0",
     "coveralls": "~2.11.1",
     "mocha-lcov-reporter": "0.0.1",
-    "package-script": "0.0.7",
     "istanbul": "~0.3.0"
   },
   "devDependencies": {
     "mocha": "~1.20.1"
   },
   "scripts": {
-    "install": "node installer.js",
+    "install-globals": "npm install -g istanbul",
     "test": "mocha Tests.js -R spec"
   },
   "repository": {
@@ -24,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/myTerminal/ProjectEulerSolutions/issues"
   },
-    "homepage": "https://github.com/myTerminal/ProjectEulerSolutions#readme",
+  "homepage": "https://github.com/myTerminal/ProjectEulerSolutions#readme",
   "keywords": [
     "project-euler"
   ],
