@@ -1,6 +1,4 @@
 language: node_js
 node_js:
   - "0.11"
-before_install:
-  - npm run install-globals
 after_script: NODE_ENV=test istanbul cover ./node_modules/mocha/bin/_mocha Tests.js -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
