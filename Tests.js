@@ -1,3 +1,5 @@
+/* global require describe */
+
 var assert = require("assert"),
     problemManager = new require("./ProblemManager")(),
     Problem = problemManager.Problem,
