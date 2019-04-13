@@ -10,6 +10,8 @@
 
 Solutions to the [Project Euler](https://projecteuler.net/progress=myTerminal) problems I have solved yet
 
+> This project does not align with my coding style anymore
+
 ## How to run a solution:
 
 You can run a particular solution by typing in the following in the console:
@@ -20,6 +22,6 @@ In the above example, '5' is the problem number you want the solution to be run 
 
 ## Running Tests:
 
-You can run solution for all the problems at once to see if any of the results are deviating. You can do that by typing the following command:
+You can run solutions for all the problems at once to see if any of the results are deviating. You can do that by typing the following command:
 
     npm test
