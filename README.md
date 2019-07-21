@@ -6,7 +6,7 @@
 [![Dependency Status](https://david-dm.org/myTerminal/project-euler-solutions.svg)](https://david-dm.org/myTerminal/project-euler-solutions)
 [![devDependency Status](https://david-dm.org/myTerminal/project-euler-solutions/dev-status.svg)](https://david-dm.org/myTerminal/project-euler-solutions#info=devDependencies)
 [![peer Dependency Status](https://david-dm.org/myTerminal/project-euler-solutions/peer-status.svg)](https://david-dm.org/myTerminal/project-euler-solutions#info=peerDependencies)  
-[![License](https://img.shields.io/badge/LICENSE-GPL%20v3.0-blue.svg)](https://www.gnu.org/licenses/gpl.html)
+[![License: CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png)](https://creativecommons.org/licenses/by-nc-sa/4.0)
 
 Solutions to the [Project Euler](https://projecteuler.net/progress=myTerminal) problems I have solved yet
 
