@@ -1,4 +1,4 @@
-# project-euler-solutions
+# project-euler-solutions-legacy
 
 [![Build Status](https://travis-ci.org/myTerminal/project-euler-solutions.svg?branch=master)](https://travis-ci.org/myTerminal/project-euler-solutions)
 [![Code Climate](https://codeclimate.com/github/myTerminal/project-euler-solutions.png)](https://codeclimate.com/github/myTerminal/project-euler-solutions)
@@ -8,9 +8,9 @@
 [![peer Dependency Status](https://david-dm.org/myTerminal/project-euler-solutions/peer-status.svg)](https://david-dm.org/myTerminal/project-euler-solutions#info=peerDependencies)  
 [![License: CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png)](https://creativecommons.org/licenses/by-nc-sa/4.0)
 
-Solutions to the [Project Euler](https://projecteuler.net/progress=myTerminal) problems I have solved yet
+Solutions to the [Project Euler](https://projecteuler.net/progress=myTerminal) problems I have solved yet **[Deprecated]**
 
-> This project does not align with my coding style anymore
+> This is my oldest project on GitHub I created to store my solutions during my early years with JavaScript, GitHub, and even Git, and hence does not even remotely depict my coding style. It is one of my least maintained projects and that is on purpose to preserve it as a memory. As a successor to it and in order to practice other programming languages, I created [project-euler-solutions](https://github.com/myTerminal/project-euler-solutions), which I have planned to take forward.
 
 ## How to run a solution:
 
