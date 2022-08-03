@@ -2,10 +2,7 @@
 
 [![Build Status](https://travis-ci.org/myTerminal/project-euler-solutions.svg?branch=master)](https://travis-ci.org/myTerminal/project-euler-solutions)
 [![Code Climate](https://codeclimate.com/github/myTerminal/project-euler-solutions.png)](https://codeclimate.com/github/myTerminal/project-euler-solutions)
-[![Coverage Status](https://img.shields.io/coveralls/myTerminal/project-euler-solutions.svg)](https://coveralls.io/r/myTerminal/project-euler-solutions?branch=master)  
-[![Dependency Status](https://david-dm.org/myTerminal/project-euler-solutions.svg)](https://david-dm.org/myTerminal/project-euler-solutions)
-[![devDependency Status](https://david-dm.org/myTerminal/project-euler-solutions/dev-status.svg)](https://david-dm.org/myTerminal/project-euler-solutions#info=devDependencies)
-[![peer Dependency Status](https://david-dm.org/myTerminal/project-euler-solutions/peer-status.svg)](https://david-dm.org/myTerminal/project-euler-solutions#info=peerDependencies)  
+[![Coverage Status](https://img.shields.io/coveralls/myTerminal/project-euler-solutions.svg)](https://coveralls.io/r/myTerminal/project-euler-solutions?branch=master)
 [![License: CC BY-NC-SA 4.0](https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png)](https://creativecommons.org/licenses/by-nc-sa/4.0)
 
 Solutions to the [Project Euler](https://projecteuler.net/progress=myTerminal) problems I have solved yet **[Deprecated]**
